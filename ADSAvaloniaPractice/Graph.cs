@@ -474,6 +474,8 @@ namespace GraphPractice
 		{
 			List<Edge> pathOfEdges = new List<Edge>();
 
+			
+
 			foreach (Edge edges in edgesList)
 			{
 				if (edges.initialNode == initialNode)
@@ -491,7 +493,8 @@ namespace GraphPractice
 
 				}
 			}
-			return shortestPath;
+            firstTime = true;
+            return shortestPath;
 
 		}
 		public void shortAlgorithmDefinitive(Node nodeChildren, Node goal, List<Edge> pathOfEdges)

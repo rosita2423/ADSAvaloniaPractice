@@ -112,7 +112,18 @@ namespace ADSAvaloniaPractice.Views
             }
             int[] shortPath = new int[10];
             String message= "Shortest path = ";
-            foreach(Node node in graph.nodesList)
+
+            for (int i = 0; i < graph.shortestPath.Length; i++)
+            {
+                graph.shortestPath[i] = 0;
+            }
+            
+            for (int i = 0; i < graph.shortestPath.Length; i++)
+            {
+                graph.shortestPath[i] = 0;
+            }
+
+            foreach (Node node in graph.nodesList)
             {
                 if(Int16.Parse(Destiny_TextBox.Text) == node.data)
                 {
