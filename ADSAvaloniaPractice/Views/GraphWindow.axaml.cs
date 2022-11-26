@@ -163,5 +163,29 @@ namespace ADSAvaloniaPractice.Views
 
             ConsoleUI.Content = savis;
         }
+        void LongestButton_Clicked(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (LongDestiny_TextBox.Text == null)
+            {
+                ConsoleUI.Content = "Insert the node that you want to go.";
+                return;
+            }
+            int[] longPath = new int[10];
+            String message1 = "Longest path = ";
+            foreach (Node node in graph.nodesList)
+            {
+                if (Int16.Parse(LongDestiny_TextBox.Text) == node.data)
+                {
+                    longPath = graph.longAlgorithmDefinitive2(graph.nodesList[0], node);
+                    break;
+                }
+            }
+            for (int i = 0; i < longPath.Length; i++)
+            {
+                message1 = message1 + longPath[i] + " ";
+            }
+            ConsoleUI.Content = message1;
+        }
+
     }
 }

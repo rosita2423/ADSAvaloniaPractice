@@ -23,11 +23,14 @@ namespace GraphPractice
 
         public List<Edge> shortestPathC = new List<Edge>();
 		public bool firstTime = true;
+		public bool firstTime1 = true;
 
-        public int[] shortestPath = new int[10];
+		public int[] shortestPath = new int[10];
 
-        //Methods
-        public void insertNode(Node node)
+		public int[] longestPath = new int[10];
+
+		//Methods
+		public void insertNode(Node node)
 		{
 			//Adding the node into the list of nodes.
 			foreach (Node nodes in nodesList)
@@ -561,6 +564,96 @@ namespace GraphPractice
                 }
             }
         }
+		public int[] longAlgorithmDefinitive2(Node initialNode, Node goal)
+		{
+			List<Edge> pathOfEdges2 = new List<Edge>();
+
+			foreach (Edge edges in edgesList)
+			{
+				if (edges.initialNode == initialNode)
+				{
+					pathOfEdges2.Add(edges);
+
+					foreach (Node nodeChildren in initialNode.children)
+					{
+						if (nodeChildren == edges.finalNode)
+						{
+							longAlgorithmDefinitive(nodeChildren, goal, pathOfEdges2);
+						}
+					}
+					pathOfEdges2.Remove(edges);
+
+				}
+			}
+			firstTime1 = true;
+			return longestPath;
+
+		}
+		public void longAlgorithmDefinitive(Node nodeChildren, Node goal, List<Edge> pathOfEdges)
+		{
+			if (nodeChildren == goal)
+			{
+				if (firstTime1 == true)
+				{
+					foreach (Edge edge in pathOfEdges)
+					{
+						for (int i = 0; i < longestPath.Length; i++)
+						{
+							if (longestPath[i] == 0)
+							{
+								longestPath[i] = edge.weight;
+								break;
+							}
+						}
+					}
+					//shortestPath = pathOfEdges;
+					firstTime1 = false;
+				}
+				else if (pathSum(longestPath) < pathSum(pathOfEdges))
+				{
+					for (int j = 0; j < longestPath.Length; j++)
+					{
+						if (longestPath[j] != 0)
+						{
+							longestPath[j] = 0;
+						}
+
+					}
+					foreach (Edge edge in pathOfEdges)
+					{
+						for (int i = 0; i < longestPath.Length; i++)
+						{
+							if (longestPath[i] == 0)
+							{
+								longestPath[i] = edge.weight;
+								break;
+							}
+						}
+					}
+					//shortestPath = pathOfEdges;
+				}
+				return;
+			}
+
+			foreach (Edge edges in edgesList)
+			{
+				if (edges.initialNode == nodeChildren)
+				{
+					pathOfEdges.Add(edges);
+
+					foreach (Node nodeChildrens in nodeChildren.children)
+					{
+						if (nodeChildrens == edges.finalNode)
+						{
+							longAlgorithmDefinitive(nodeChildrens, goal, pathOfEdges);
+						}
+					}
+					pathOfEdges.Remove(edges);
+
+				}
+			}
+		}
+
 		public int pathSum(List<Edge> path)
 		{
 			int pathResult = 0;

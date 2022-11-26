@@ -7,7 +7,7 @@
 		Height="400"
 		x:Class="ADSAvaloniaPractice.Views.GraphWindow"
         Title="Graph Structure">
-	<Grid RowDefinitions="Auto,*,*,*,*,*,*">
+	<Grid RowDefinitions="Auto,*,*,*,*,*,*,*">
 
 		<!--Back button and title-->
 		<Grid Grid.Row="0" Height="40">
@@ -19,11 +19,11 @@
 		<Grid Grid.Row="1" ColumnDefinitions="*,*,*,*" Background="#DEDEDE">
 			<Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Add node</Label>
 
-			
+
 
 			<Button Click="AddNode_Button" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Add</Button>
 
-			
+
 		</Grid>
 
 		<!--Add Edge section-->
@@ -44,17 +44,17 @@
 			<TextBox Name="DeleteNode_TextBox" Grid.Row="1" Grid.Column="1" Watermark="Node num" Height="20" Width="90"></TextBox>
 			<Button  Click="DeleteButton_Clicked" Grid.Row="1" Grid.Column="2" >Delete</Button>
 		</Grid>
-		
+
 		<!--Delete edge section-->
 		<Grid Grid.Row="4" RowDefinitions="*,*" ColumnDefinitions="*,*,*,*,*" Background="#DEDEDE">
 			<Label Grid.Row="1" Grid.Column="0">Delete edge</Label>
-			
+
 			<Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">Start</Label>
 			<TextBox Name="DeleteEdgeStart_TextBox" Grid.Row="1" Grid.Column="1" Watermark="Node num" Height="20" Width="90"></TextBox>
 
 			<Label Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">End</Label>
 			<TextBox Name="DeleteEdgeEnd_TextBox" Grid.Row="1" Grid.Column="2" Watermark="Node num" Height="20" Width="90"></TextBox>
-			
+
 			<Button  Click="DeleteEdgeButton_Clicked" Grid.Row="1" Grid.Column="3" >Delete</Button>
 		</Grid>
 		<!--Transverse and search section-->
@@ -72,10 +72,17 @@
 			</ComboBox>
 			<Button Click="TransverseButton_Clicked" Grid.Column="5" VerticalAlignment="Center">Print</Button>
 		</Grid>
+		<!--Longest algoritm section-->
+		<Grid Grid.Row="6" ColumnDefinitions="*,*,*" Background="#DEDEDE">
+			<Label Grid.Column="0">Longest path</Label>
+			<TextBox Name="LongDestiny_TextBox" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Watermark="Node num"></TextBox>
+			<Button Click="LongestButton_Clicked" Grid.Column="2" >Print</Button>
+		</Grid>
 		<!--Console section-->
-		<Grid Grid.Row="6" ColumnDefinitions="*,*,*,*" Background="#DEDEDE">
+		<Grid Grid.Row="7" ColumnDefinitions="*,*,*,*" Background="#DEDEDE">
 			<Label Grid.Column="0" VerticalAlignment="Center">Console:</Label>
 			<Label Name="ConsoleUI" Grid.Column="2" VerticalAlignment="Center" Width="500"></Label>
 		</Grid>
 	</Grid>
 </Window>
+
