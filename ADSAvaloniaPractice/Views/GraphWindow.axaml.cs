@@ -133,7 +133,11 @@ namespace ADSAvaloniaPractice.Views
             }
             for(int i = 0; i < shortPath.Length; i++)
             {
-                message = message + shortPath[i] + " ";
+                if(shortPath[i] != 0)
+                {
+                    message = message + shortPath[i] + " ";
+                }
+                
             }
             ConsoleUI.Content = message;
         }
@@ -172,6 +176,15 @@ namespace ADSAvaloniaPractice.Views
             }
             int[] longPath = new int[10];
             String message1 = "Longest path = ";
+            for (int i = 0; i < graph.longestPath.Length; i++)
+            {
+                graph.longestPath[i] = 0;
+            }
+
+            for (int i = 0; i < graph.longestPath.Length; i++)
+            {
+                graph.longestPath[i] = 0;
+            }
             foreach (Node node in graph.nodesList)
             {
                 if (Int16.Parse(LongDestiny_TextBox.Text) == node.data)
@@ -182,7 +195,10 @@ namespace ADSAvaloniaPractice.Views
             }
             for (int i = 0; i < longPath.Length; i++)
             {
-                message1 = message1 + longPath[i] + " ";
+                if (longPath[i] != 0)
+                {
+                    message1 = message1 + longPath[i] + " ";
+                }
             }
             ConsoleUI.Content = message1;
         }

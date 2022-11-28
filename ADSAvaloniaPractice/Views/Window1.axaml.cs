@@ -107,9 +107,11 @@ namespace ADSAvaloniaPractice.Views
             {
                 if(node.data == Int16.Parse(DeleteSelectNode_TextBox.Text))
                 {
+                    ConsoleUI.Content = "Node " + node.data + " successfully deleted.";
                     listOfNodes[0].RemoveDefinitive(node);
+                    
                     listOfNodes.Remove(node);
-                    ConsoleUI.Content = "Node Successfully deleted.";
+                    
                     return;
                 }
             }
